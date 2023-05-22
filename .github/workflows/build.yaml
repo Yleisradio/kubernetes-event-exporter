@@ -20,37 +20,37 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: "eu-west-1"
       run: go test ./...
-  ci:
-    name: Compile binary
-    runs-on: ubuntu-22.04
-    needs: tests
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-    - name: Set version number
-      run: |
-        BRANCH="${GITHUB_REF_NAME//\//-}"
-        VERSION=$([ "$GITHUB_REF_NAME" == "master" ] && echo "1.2.${GITHUB_RUN_NUMBER}" || echo "0.2.${GITHUB_RUN_NUMBER}-${GITHUB_REF_NAME//\//-}")
-        echo "BRANCH=$BRANCH" | tee -a $GITHUB_ENV
-        echo "VERSION_NUMBER=$VERSION" | tee -a $GITHUB_ENV
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v2
-      with:
-        platforms: ${{ env.PLATFORMS }}
-    - name: Docker login into ECR
-      env:
-        AWS_EC2_METADATA_DISABLED: true
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: |
-        set -eu -o pipefail
-        aws --region eu-west-1 ecr get-login-password \
-        | docker login --password-stdin --username AWS "$ECR_REPOSITORY"
-    - name: Build images
-      env:
-      run: |
-        docker buildx build --platform "$PLATFORMS" -t "$ECR_REPOSITORY:$VERSION" -t "$ECR_REPOSITORY:$BRANCH" -t "$ECR_REPOSITORY:latest" --push .
-    - name: docker logout
-      run: docker logout
+    ci:
+      name: Compile binary
+      runs-on: ubuntu-22.04
+      needs: tests
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Set version number
+        run: |
+          BRANCH="${GITHUB_REF_NAME//\//-}"
+          VERSION=$([ "$GITHUB_REF_NAME" == "master" ] && echo "1.2.${GITHUB_RUN_NUMBER}" || echo "0.2.${GITHUB_RUN_NUMBER}-${GITHUB_REF_NAME//\//-}")
+          echo "BRANCH=$BRANCH" | tee -a $GITHUB_ENV
+          echo "VERSION_NUMBER=$VERSION" | tee -a $GITHUB_ENV
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          platforms: ${{ env.PLATFORMS }}
+      - name: Docker login into ECR
+        env:
+          AWS_EC2_METADATA_DISABLED: true
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          set -eu -o pipefail
+          aws --region eu-west-1 ecr get-login-password \
+          | docker login --password-stdin --username AWS "$ECR_REPOSITORY"
+      - name: Build images
+        env:
+        run: |
+          docker buildx build --platform "$PLATFORMS" -t "$ECR_REPOSITORY:$VERSION" -t "$ECR_REPOSITORY:$BRANCH" -t "$ECR_REPOSITORY:latest" --push .
+      - name: docker logout
+        run: docker logout
