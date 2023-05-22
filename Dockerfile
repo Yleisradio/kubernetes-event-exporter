@@ -1,5 +1,6 @@
+# syntax=docker/dockerfile:experimental
 FROM golang:1.19 AS builder
-ADD . /app
+COPY . /app
 WORKDIR /app
 RUN CGO_ENABLED=0 GOOS=linux GO11MODULE=on go build -a -o /main .
 
