@@ -6,7 +6,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: "eu-west-1"
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-  PLATFORMS: "linux/amd64"
+  PLATFORMS: "linux/amd64,linux/arm64"
 jobs:
   tests:
     name: Automated tests
