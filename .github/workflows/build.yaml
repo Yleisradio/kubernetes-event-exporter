@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: tests
     steps:
+    - uses: actions/checkout@v3
     - name: Docker login into ECR
       run: |
         set -eu -o pipefail
