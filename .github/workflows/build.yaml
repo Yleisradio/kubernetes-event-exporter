@@ -50,7 +50,6 @@ jobs:
         aws --region eu-west-1 ecr get-login-password \
         | docker login --password-stdin --username AWS "$ECR_REPOSITORY"
     - name: Build images
-      env:
       run: |
         docker buildx build --platform "$PLATFORMS" -t "$ECR_REPOSITORY:$VERSION" -t "$ECR_REPOSITORY:$BRANCH" -t "$ECR_REPOSITORY:latest" --push .
     - name: docker logout
