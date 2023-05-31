@@ -46,6 +46,6 @@ jobs:
         echo "VERSION=$VERSION" | tee -a $GITHUB_ENV
     - name: Build images
       run: |
-        docker buildx build --platform "$PLATFORMS" -t "$ECR_REPOSITORY:$VERSION" -t "$ECR_REPOSITORY:$BRANCH" -t "$ECR_REPOSITORY:latest" --push .
+        docker buildx build --platform "$PLATFORMS" -t "$ECR_REPOSITORY:$VERSION" --push .
     - name: docker logout
       run: docker logout
