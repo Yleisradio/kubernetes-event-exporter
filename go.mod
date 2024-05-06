@@ -11,7 +11,7 @@ require (
 	github.com/elastic/go-elasticsearch/v7 v7.17.7
 	github.com/goccy/go-yaml v1.11.0
 	github.com/hashicorp/golang-lru v0.5.3
-	github.com/linkedin/goavro/v2 v2.12.0
+	github.com/linkedin/goavro/v2 v2.13.0
 	github.com/opensearch-project/opensearch-go v1.1.0
 	github.com/opsgenie/opsgenie-go-sdk-v2 v1.2.14
 	github.com/prometheus/client_golang v1.16.0
@@ -41,7 +41,6 @@ require (
 	github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21 // indirect
 	github.com/eapache/queue v1.1.0 // indirect
 	github.com/emicklei/go-restful/v3 v3.10.1 // indirect
-	github.com/evanphx/json-patch v4.12.0+incompatible // indirect
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/go-kit/log v0.2.1 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
