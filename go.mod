@@ -16,7 +16,7 @@ require (
 	github.com/opsgenie/opsgenie-go-sdk-v2 v1.2.14
 	github.com/prometheus/client_golang v1.16.0
 	github.com/prometheus/exporter-toolkit v0.10.0
-	github.com/rs/zerolog v1.28.0
+	github.com/rs/zerolog v1.33.0
 	github.com/slack-go/slack v0.12.0
 	github.com/stretchr/testify v1.8.1
 	google.golang.org/api v0.107.0
@@ -41,7 +41,6 @@ require (
 	github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21 // indirect
 	github.com/eapache/queue v1.1.0 // indirect
 	github.com/emicklei/go-restful/v3 v3.10.1 // indirect
-	github.com/evanphx/json-patch v4.12.0+incompatible // indirect
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/go-kit/log v0.2.1 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
@@ -79,7 +78,7 @@ require (
 	github.com/klauspost/compress v1.15.13 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/mattn/go-isatty v0.0.17 // indirect
+	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
